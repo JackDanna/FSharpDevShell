@@ -42,6 +42,12 @@
               version = "2.0.5";
               sha256 = "sha256-acP3NULTNNyPw5052ZX1L+ymqn9+t4ydoCns29Ta1MU=";
             }
+            {
+              name = "vscode-dotnet-pack";
+              publisher = "ms-dotnettools";
+              version = "1.0.13";
+              sha256 = "sha256-z3xiXgWADSHdZM/+MSmqRXqDjiX4O6whevN1zSmByWQ=";
+            }
           ];
         })
       ];
