@@ -11,6 +11,7 @@
         allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
           "vscode-with-extensions"
           "vscode"
+          "vscode-extension-mhutchie-git-graph"
         ];
       };
     };
