@@ -26,8 +26,7 @@
     devShells.${system}.default = pkgs.mkShell rec {
       name = "FSharpDevShell";
       buildInputs = with pkgs; [
-        bashInteractive
-        dotnet-sdk_8
+        dotnet-sdk_9
         (vscode-with-extensions.override  {
           vscode = pkgs.vscode;
           vscodeExtensions = with pkgs.vscode-extensions; [
@@ -39,8 +38,8 @@
             {
               name = "vscode-dotnet-runtime";
               publisher = "ms-dotnettools";
-              version = "2.0.5";
-              sha256 = "sha256-acP3NULTNNyPw5052ZX1L+ymqn9+t4ydoCns29Ta1MU=";
+              version = "2.2.8";
+              sha256 = "sha256-1dwkkaGQC5CZjOmebzSSqkomhA0hOXiIv8jV+Vo8jcw=";
             }
             {
               name = "vscode-dotnet-pack";
@@ -50,6 +49,7 @@
             }
           ];
         })
+        bashInteractive # Without this, vscode's terminal will be broken
       ];
 
       shellHook = ''
