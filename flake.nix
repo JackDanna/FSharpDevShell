@@ -23,13 +23,6 @@
     
     oldPkgs = import nixpkgs-old {
       inherit system;
-      config = {
-        allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-          "vscode-with-extensions"
-          "vscode"
-          "vscode-extension-mhutchie-git-graph"
-        ];
-      };
     };
   in 
   {
@@ -48,7 +41,7 @@
           vscode = pkgs.vscode;
           vscodeExtensions = with pkgs.vscode-extensions; [
             ionide.ionide-fsharp
-            oldPkgs.vscode-extensions.ms-dotnettools.csharp
+            oldPkgs.vscode-extensions.ms-dotnettools.csharp # We need to make sure we use version 2.39.32 since there is a bug otherise: https://github.com/ionide/ionide-vscode-fsharp/issues/2039
             ms-dotnettools.vscode-dotnet-runtime
 
             jnoortheen.nix-ide
