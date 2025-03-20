@@ -2,10 +2,26 @@
 {
   description = "A FSharp Dev Shell";
 
-  outputs = { self, nixpkgs }:
+  inputs = {
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-old.url = "github:NixOS/nixpkgs/c792c60b8a97daa7efe41a6e4954497ae410e0c1";
+  };
+
+  outputs = { self, nixpkgs, nixpkgs-old }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+          "vscode-with-extensions"
+          "vscode"
+          "vscode-extension-mhutchie-git-graph"
+        ];
+      };
+    };
+    
+    oldPkgs = import nixpkgs-old {
       inherit system;
       config = {
         allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
@@ -32,22 +48,24 @@
           vscode = pkgs.vscode;
           vscodeExtensions = with pkgs.vscode-extensions; [
             ionide.ionide-fsharp
-            ms-dotnettools.csharp
+            oldPkgs.vscode-extensions.ms-dotnettools.csharp
+            ms-dotnettools.vscode-dotnet-runtime
+
             jnoortheen.nix-ide
             mhutchie.git-graph
           ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-            {
-              name = "vscode-dotnet-runtime";
-              publisher = "ms-dotnettools";
-              version = "2.0.5";
-              sha256 = "sha256-acP3NULTNNyPw5052ZX1L+ymqn9+t4ydoCns29Ta1MU=";
-            }
-            {
-              name = "vscode-dotnet-pack";
-              publisher = "ms-dotnettools";
-              version = "1.0.13";
-              sha256 = "sha256-z3xiXgWADSHdZM/+MSmqRXqDjiX4O6whevN1zSmByWQ=";
-            }
+            # {
+            #   name = "vscode-dotnet-runtime";
+            #   publisher = "ms-dotnettools";
+            #   version = "2.0.5";
+            #   sha256 = "sha256-acP3NULTNNyPw5052ZX1L+ymqn9+t4ydoCns29Ta1MU=";
+            # }
+            # {
+            #   name = "vscode-dotnet-pack";
+            #   publisher = "ms-dotnettools";
+            #   version = "1.0.13";
+            #   sha256 = "sha256-z3xiXgWADSHdZM/+MSmqRXqDjiX4O6whevN1zSmByWQ=";
+            # }
           ];
         })
       ];
@@ -57,7 +75,7 @@
         echo "Welcome to the FSharp Dev Shell!"
       '';
     };
-  }; 
+  };
 
 }
 
