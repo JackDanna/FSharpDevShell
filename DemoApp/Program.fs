@@ -1,21 +1,21 @@
 ﻿// https://www.geeksforgeeks.org/count-number-ways-reach-given-score-game/
 
-// let rec findValidNumCombosRecursively scoreToReach (index: int) (scorablePointsPerRound: int list) =
+let rec findValidNumCombosRecursively scoreToReach (index: int) (scorablePointsPerRound: int list) =
     
-//     if scoreToReach = 0 then 1u
-//     elif scoreToReach < 0 then 0u
-//     elif index >= (scorablePointsPerRound.Length) then 0u
-//     else
-//         let currentIndexResult = findValidNumCombosRecursively (scoreToReach - scorablePointsPerRound[index]) index scorablePointsPerRound
-//         let nextIndexResult = findValidNumCombosRecursively scoreToReach (index + 1) scorablePointsPerRound
-//         currentIndexResult + nextIndexResult
+    if scoreToReach = 0 then 1u
+    elif scoreToReach < 0 then 0u
+    elif index >= (scorablePointsPerRound.Length) then 0u
+    else
+        let currentIndexResult = findValidNumCombosRecursively (scoreToReach - scorablePointsPerRound[index]) index scorablePointsPerRound
+        let nextIndexResult = findValidNumCombosRecursively scoreToReach (index + 1) scorablePointsPerRound
+        currentIndexResult + nextIndexResult
     
 
-// let result = findValidNumCombosRecursively 20 0 [3;5;10]
+let result = findValidNumCombosRecursively 20 0 [3;5;10]
 
-// result
-// |> string
-// |> printfn "%s"
+result
+|> string
+|> printfn "%s"
 
 // let rec temp scoreToReach currentScore (index: int) (possiblePointsThatCanBeScoredList: int list) : uint =
 //     if currentScore = scoreToReach then 1u

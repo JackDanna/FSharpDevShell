@@ -1,24 +1,42 @@
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//         {
+//             "label": "build",
+//             "command": "dotnet",
+//             "type": "shell",
+//             "args": [
+//                 "build",
+//                 "${workspaceFolder}",
+//                 "/property:GenerateFullPaths=true",
+//                 "/consoleloggerparameters:NoSummary"
+//             ],
+//             "group": {
+//                 "kind": "build",
+//                 "isDefault": true
+//             },
+//             "presentation": {
+//                 "reveal": "silent"
+//             },
+//             "problemMatcher": "$msCompile"
+//         }
+//     ]
+// }
+
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "shell",
-            "args": [
-                "build",
-                "${workspaceFolder}",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": "$msCompile"
+      {
+        "label": "build (DemoApp.fsproj)",
+        "command": "dotnet",
+        "args": [
+          "build"
+        ],
+        "type": "process",
+        "problemMatcher": "$msCompile",
+        "options": {
+          "cwd": "${workspaceFolder}"
         }
+      },
     ]
-}
+  }

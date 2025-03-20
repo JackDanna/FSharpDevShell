@@ -1,16 +1,30 @@
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": ".NET Core Launch (console)",
+//             "type": "coreclr",
+//             "request": "launch",
+//             "preLaunchTask": "build",
+//             "program": "${workspaceFolder}/DemoApp/bin/Debug/net9.0/DemoApp.dll",
+//             "args": [],
+//             "cwd": "${workspaceFolder}",
+//             "stopAtEntry": false,
+//             "console": "internalConsole"
+//         }
+//     ]
+// }
+
 {
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": ".NET Core Launch (console)",
+            "name": ".NET SDK Launch",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceFolder}/DemoApp/bin/Debug/net9.0/DemoApp.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "stopAtEntry": false,
-            "console": "internalConsole"
+            "preLaunchTask": "build (DemoApp.fsproj)",
+            "program": "${workspaceFolder}/DemoApp/bin/Debug/net9.0/DemoApp.dll"
         }
     ]
 }
