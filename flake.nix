@@ -36,7 +36,7 @@
       name = "FSharpDevShell";
       buildInputs = with pkgs; [
         bashInteractive
-        dotnet-sdk_8
+        dotnet-sdk_9
         (vscode-with-extensions.override  {
           vscode = pkgs.vscode;
           vscodeExtensions = with pkgs.vscode-extensions; [
